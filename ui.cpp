@@ -21,7 +21,7 @@ void print_error(const state *s, const char *fmt, ...)
   if (NULL == s)
     internal_error("%s: NULL state passed to print_error", __progname);
 
-  if (s->mode & mode_silent)
+  if (s->mode & (mode_silent || mode_full_silent))
     return;
 
   va_list(ap);
@@ -50,7 +50,7 @@ void print_error_unicode(state *s, const TCHAR *fn, const char *fmt, ...)
   if (NULL == s)
     internal_error("%s: NULL state passed to print_error_unicode", __progname);
 
-  if (!(s->mode & mode_silent))
+  if (!(s->mode & (mode_silent || mode_full_silent)))
     {
       display_filename(stderr,fn,FALSE);
       fprintf(stderr,": ");

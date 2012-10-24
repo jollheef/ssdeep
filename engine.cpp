@@ -42,16 +42,23 @@ bool display_result(state *s, const TCHAR * fn, const char * sum)
   }
   else
   {
-    // No special options selected. Display the hash for this file
-    if (s->first_file_processed)
+    if (!(MODE(mode_full_silent)))
     {
-      print_status("%s", OUTPUT_FILE_HEADER);
-      s->first_file_processed = false;
-    }
+      // No special options selected. Display the hash for this file
+      if (s->first_file_processed)
+      {
+        print_status("%s", OUTPUT_FILE_HEADER);
+        s->first_file_processed = false;
+      }
 
-    printf ("%s,\"", sum);
-    display_filename(stdout,fn,TRUE);
-    print_status("\"");
+      printf ("%s,\"", sum);
+      display_filename(stdout,fn,TRUE);
+      print_status("\"");
+    }
+    else
+    {
+      printf ("%s", sum);
+    }
   }
 
   return false;

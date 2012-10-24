@@ -34,7 +34,7 @@ void sanity_check(state *s, int condition, const char *msg)
   
   if (condition)
     {
-      if (!(s->mode & mode_silent))
+	if (!(s->mode & (mode_silent || mode_full_silent)))
 	{
 	  print_status("%s: %s", __progname, msg);
 	  try_msg();

@@ -153,6 +153,7 @@ int getopt(int argc, char *const argv[], const char *optstring);
 #define mode_compare_unknown 1<<12
 #define mode_cluster      1<<13
 #define mode_recursive_cluster 1<<14
+#define mode_full_silent 1<<15
 
 #define MODE(A)   (s->mode & A)
 

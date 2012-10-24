@@ -1,4 +1,5 @@
 // Fuzzy Hashing by Jesse Kornblum
+// Copyright (C) 2012 Mikhail Klementyev aka jollheef jollheef<AT>riseup.net
 // Copyright (C) 2012 Kyrus
 // Copyright (C) 2010 ManTech International Corporation
 //
@@ -40,6 +41,7 @@ static void usage(void)
 {
   print_status ("%s version %s by Jesse Kornblum", __progname, VERSION);
   print_status ("Copyright (C) 2012 Kyrus");
+  print_status ("Minor fix by Mikhail Klementyev jollheef <AT> riseup.net");
   print_status ("");
   print_status ("Usage: %s [-m file] [-k file] [-dpgvrsblcxa] [-t val] [-h|-V] [FILES]", 
 	  __progname);
@@ -53,6 +55,7 @@ static void usage(void)
   print_status ("-r - Recursive mode");
 
   print_status ("-s - Silent mode; all errors are supressed");
+  print_status ("-S - Full silent mode; display only hash");
   print_status ("-b - Uses only the bare name of files; all path information omitted");
   print_status ("-l - Uses relative paths for filenames");
   print_status ("-c - Prints output in CSV format");
@@ -70,7 +73,7 @@ static void process_cmd_line(state *s, int argc, char **argv)
 {
   int i, match_files_loaded = FALSE;
 
-  while ((i=getopt(argc,argv,"gavhVpdsblcxt:rm:k:")) != -1) {
+  while ((i=getopt(argc,argv,"gavhVpdsSblcxt:rm:k:")) != -1) {
     switch(i) {
       
     case 'g':
@@ -103,6 +106,9 @@ static void process_cmd_line(state *s, int argc, char **argv)
 
     case 's':
       s->mode |= mode_silent; break;
+
+    case 'S':
+      s->mode |= mode_full_silent; break;
 
     case 'b':
       s->mode |= mode_barename; break;
@@ -325,9 +331,12 @@ int main(int argc, char **argv)
     // to be meaningful, we should display a warning message to the user.
     // This happens mostly when people are testing very small files
     // e.g. $ echo "hello world" > foo && ssdeep foo
-    if ((not s->found_meaningful_file) and s->processed_file)
+    if (!(MODE(mode_full_silent)))
     {
-      print_error(s,"%s: Did not process files large enough to produce meaningful results", __progname);
+      if ((not s->found_meaningful_file) and s->processed_file)
+      {
+        print_error(s,"%s: Did not process files large enough to produce meaningful results", __progname);
+      }
     }
   }
 

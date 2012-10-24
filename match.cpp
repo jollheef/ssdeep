@@ -43,8 +43,8 @@ bool sig_file_open(state *s, const char * fn)
   s->known_handle = fopen(fn,"rb");
   if (NULL == s->known_handle)
   {
-    if ( ! (MODE(mode_silent)) )
-      perror(fn);
+    if ( ! ((MODE(mode_silent)) || (MODE(mode_full_silent))))
+    perror(fn);
     return true;
   }
 
@@ -52,8 +52,8 @@ bool sig_file_open(state *s, const char * fn)
   char buffer[MAX_STR_LEN];
   if (NULL == fgets(buffer,MAX_STR_LEN,s->known_handle))
   {
-    if ( ! (MODE(mode_silent)) )
-      perror(fn);
+    if ( ! ((MODE(mode_silent)) || (MODE(mode_full_silent))))
+    perror(fn);
     fclose(s->known_handle);
     return true;
   }
@@ -63,8 +63,8 @@ bool sig_file_open(state *s, const char * fn)
   if (strncmp(buffer,SSDEEPV1_0_HEADER,MAX_STR_LEN) and 
       strncmp(buffer,SSDEEPV1_1_HEADER,MAX_STR_LEN)) 
   {
-    if ( ! (MODE(mode_silent)) )
-      print_error(s,"%s: Invalid file header.", fn);
+    if ( ! ((MODE(mode_silent)) || (MODE(mode_full_silent))))
+    print_error(s,"%s: Invalid file header.", fn);
     fclose(s->known_handle);
     return true;
   }
