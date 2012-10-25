@@ -1,11 +1,15 @@
+2012-10-25: Mikhail Klementyev <jollheef@riseup.net>:
+
+	* Add no_newline_mode.
+
 2012-10-24: Mikhail Klementyev <jollheef@riseup.net>:
-	
+
 	* Add full_silent_mode.
 
 2012-07-23: Jesse Korblum <research@jessekornblum.com>:
 
 	* main.cpp, match.cpp: Renamed the match_pretty function for clarity.
-	
+
 2012-07-17: Jesse Korblum <research@jessekornblum.com>:
 
 	* match.cpp: Fixing bugs in matching, clustering modes
@@ -33,7 +37,7 @@
 	* main.cpp: Added flags for clustering mode
 	* ssdeep.h: Added flags for clustering mode
 	* match.cpp: Setting up for clustering mode
-	
+
 2012-05-25 Jesse Kornblum <research@jessekornblum.com>:
 
 	* main.cpp: Updated command line argument processing
@@ -44,9 +48,9 @@
 	* match.cpp: Convert to C++
 
 2012-04-24 Jesse Kornblum <research@jessekornblum.com>:
-	
+
 	* ssdeep.1: Updating support for stdin, clarifying modes
-        * Makefile.am: LF to CR/LF change now done by zip program
+	* Makefile.am: LF to CR/LF change now done by zip program
 	* ssdeep.h: Adding Doxygen comments
 	* match.cpp: Fixed bug in Win32 filename construction
 	* fuzzy.h: Cleanup and commenting
@@ -58,7 +62,7 @@
 2012-04-15: Jesse Kornblum <research@jessekornblum.com>:
 
 	* main.c: Fixed error handling in getopt processing
-	
+
 2012-02-16 Jesse Kornblum <research@jessekornblum.com>:
 
 	* main.c: Bump copyright to 2012 in usage message. Add flag for clustering
