@@ -73,7 +73,7 @@ static void process_cmd_line(state *s, int argc, char **argv)
 {
   int i, match_files_loaded = FALSE;
 
-  while ((i=getopt(argc,argv,"gavhVpdsSblcxt:rm:k:")) != -1) {
+  while ((i=getopt(argc,argv,"gavhVpdsSnblcxt:rm:k:")) != -1) {
     switch(i) {
       
     case 'g':
@@ -109,6 +109,9 @@ static void process_cmd_line(state *s, int argc, char **argv)
 
     case 'S':
       s->mode |= mode_full_silent; break;
+
+    case 'n':
+      s->mode |= mode_no_newline; break;
 
     case 'b':
       s->mode |= mode_barename; break;

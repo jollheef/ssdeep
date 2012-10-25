@@ -58,6 +58,10 @@ bool display_result(state *s, const TCHAR * fn, const char * sum)
     else
     {
       printf ("%s", sum);
+      if (!(MODE(mode_no_newline)))
+      {
+	  printf ("\n");
+      }
     }
   }
 
