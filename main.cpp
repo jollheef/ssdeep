@@ -56,6 +56,7 @@ static void usage(void)
 
   print_status ("-s - Silent mode; all errors are supressed");
   print_status ("-S - Full silent mode; display only hash");
+  print_status ("-n - Do not output the trailing newline. Work only as '-Sn'");
   print_status ("-b - Uses only the bare name of files; all path information omitted");
   print_status ("-l - Uses relative paths for filenames");
   print_status ("-c - Prints output in CSV format");
