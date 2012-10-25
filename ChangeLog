@@ -1,3 +1,7 @@
+2012-10-24: Mikhail Klementyev <jollheef@riseup.net>:
+	
+	* Add full_silent_mode.
+
 2012-07-23: Jesse Korblum <research@jessekornblum.com>:
 
 	* main.cpp, match.cpp: Renamed the match_pretty function for clarity.
